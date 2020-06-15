@@ -1,1 +1,1 @@
-🌎📈 Integração entre as plataformas Pipedrive e Bling, com log no MongoDB [em desenvolvimento].
+🌎📈 Integração entre as plataformas Pipedrive e Bling, com registro no MongoDB.
