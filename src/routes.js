@@ -3,12 +3,7 @@ const Order = require('./controllers/OrderController');
 
 const routes = express.Router();
 
-routes.get('/', (request, response) => {
-  return response.json({
-    message: 'Hello World'
-  });
-});
-
 routes.get('/sync', Order.sync);
+routes.get('/orders', Order.orders);
 
 module.exports = routes;

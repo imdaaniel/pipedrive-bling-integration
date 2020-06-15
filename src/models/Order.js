@@ -1,8 +1,8 @@
 const { Schema, model } = require('mongoose');
 
-const OpportunitySchema = new Schema({
+const OrderSchema = new Schema({
   date: {
-    type: Date,
+    type: String,
     required: true
   },
   amount:  {
@@ -13,4 +13,4 @@ const OpportunitySchema = new Schema({
   timestamps: true
 });
 
-module.exports = model('Opportunity', OpportunitySchema);
+module.exports = model('Orders', OrderSchema, 'Orders');

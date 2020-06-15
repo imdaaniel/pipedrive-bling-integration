@@ -39,7 +39,7 @@ const bling = {
       xmlString = xml({
         pedido: [
           {
-            numeroOrdemCompra: 3,
+            numeroOrdemCompra: opportunity.id,
           },
           {
             cliente: [
@@ -70,24 +70,23 @@ const bling = {
     return xmls;
   },
 
-  createOrder: async newOpportunities => {
+  createOrders: async newOpportunities => {
     const xmlStrings = await bling.prepare(newOpportunities);
-    let responses = [];
-
-    const form = new FormData();
-    form.append('apikey', bling.apikey);
-
+    let amount = 0;
+    
     for (let i = 0; i < newOpportunities.length; i++) {
+      const form = new FormData();
+      form.append('apikey', bling.apikey);
       form.append('xml', xmlStrings[i]);
 
       let response = await axios.post(`${bling.base_url}/pedido/json`, form, {
         headers: form.getHeaders()
       });
 
-      responses.push(response.data);
+      amount += newOpportunities[i].value;
     }
 
-    return responses;
+    return amount;
   }
 }
 
